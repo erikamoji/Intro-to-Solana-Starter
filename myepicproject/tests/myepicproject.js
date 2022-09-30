@@ -22,7 +22,7 @@ const main = async() => {
   let account = await program.account.baseAccount.fetch(baseAccount.publicKey);
   console.log('👀 GIF Count', account.totalGifs.toString())
 	
-  await program.rpc.addGif("https://media.giphy.com/media/ejJclNX60XyEo555wW/giphy.gif", {
+  await program.rpc.addGif("ABC-123-abc", {
     accounts: {
       baseAccount: baseAccount.publicKey,
       user: provider.wallet.publicKey,
