@@ -7,6 +7,9 @@ import "./App.css";
 import idl from "./idl.json";
 import kp from "./keypair.json";
 import Barcode from 'react-barcode';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
 
 //CONSTANTS
 const { SystemProgram, Keypair } = web3;
@@ -166,14 +169,24 @@ const App = () => {
 
   const renderNotConnectedContainer = () => (
     <div className="container">
-      <button
+      <Navbar>
+      <Container>
+      <Navbar.Brand href="#home"><p className="header">CODE128</p></Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+          <button
         className="cta-button connect-wallet-button"
         onClick={connectWallet}
       >
         SIGN IN
       </button>
-      <p className="header">Scene Portal</p>
-      <p className="sub-header">Your favorite scenes, on the blockchain</p>
+          </Navbar.Text>
+        </Navbar.Collapse>
+        </Container>
+        </Navbar>
+      
+      <p className="sub-header">Turn your barcodes into blocks</p>
       <div className="moon" />
       <div className="kiki" />
     </div>
@@ -194,13 +207,22 @@ const App = () => {
     } else {
       return (
         <div className="connected-container">
-          <p className="connected-header">SCENE PORTAL</p>
+          <p className="connected-header">WELCOME {shortenAddress(walletAddress)}</p>
+          
           <button
             className="cta-button disconnect-wallet-button"
             onClick={disconnectWallet}
           >
-            SIGN OUT {shortenAddress(walletAddress)}
+            SIGN OUT
           </button>
+          
+          <div className="gif-grid">
+            {gifList.map((item, index) => (
+              <div className="gif-item" key={index}>
+                  <Barcode fontSize={15} width={1} height={50} value={item.gifLink} />
+              </div>
+            ))}
+          </div>
           <form
             className="form"
             onSubmit={(event) => {
@@ -210,7 +232,7 @@ const App = () => {
           >
             <input
               type="text"
-              placeholder="post your favorite film/tv scene"
+              placeholder="enter in your loyalty card number"
               value={inputValue}
               onChange={onInputChange}
             />
@@ -218,19 +240,6 @@ const App = () => {
               SUBMIT
             </button>
           </form>
-          <div className="gif-grid">
-            {gifList.map((item, index) => (
-              <div className="gif-item" key={index}>
-                  <Barcode width="1" value={item.gifLink} />,
-                <div className="address-tag">
-                  <p className="address">
-                    @{shortenAddress(item.userAddress.toString())}
-                  </p>
-                  <canvas id="canvas"></canvas>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       );
     }
@@ -277,5 +286,7 @@ const App = () => {
     </div>
   );
 };
+
+
 
 export default App;
