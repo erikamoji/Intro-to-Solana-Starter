@@ -15,9 +15,6 @@
 - [Material Design](https://developers.google.com/fonts/docs/material_icons) icons and [CSS.gg](https://github.com/astrit/css.gg) icons using [react-icons](https://react-icons.github.io/react-icons)
 - styled with [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/), CSS [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), [favicon.io](https://favicon.io/)
 
-
-**Next steps:** Enabling removal of specific barcodes, styling the toast notifs, Safari compatiable styling
-
 **Notes on this build**
 
 Currently the app creates a new account on refresh/initialization in `intro-to-solana-project/src/App.js` with the line `let baseAccount = Keypair.generate();`. Remove this and proceed to read below if you'd like instructions on how to create a shared `baseAccount`
@@ -28,6 +25,8 @@ Currently the app creates a new account on refresh/initialization in `intro-to-s
     const secret = new Uint8Array(arr);
     const baseAccount = web3.Keypair.fromSecretKey(secret);
 
+
+**Next steps:** Enabling removal of specific barcodes, styling the toast notifs, Safari compatiable styling
 
 ## How to clone
 
