@@ -26,7 +26,7 @@ Currently the app creates a new account on refresh/initialization in `intro-to-s
     const baseAccount = web3.Keypair.fromSecretKey(secret);
 
 
-**Next steps:** Enabling removal of specific barcodes, styling the toast notifs, Safari compatiable styling
+**Next steps:** Enabling removal of specific barcodes, styling the toast notifs, Safari compatible styling
 
 ## How to clone
 
