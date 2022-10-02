@@ -13,7 +13,7 @@
 - [react-barcode](https://github.com/kciter/react-barcode), a React wrapper for [JSBarcode](https://github.com/lindell/JsBarcode).
 - [react-hot-toast](https://react-hot-toast.com/)
 - [Material Design](https://developers.google.com/fonts/docs/material_icons) icons and [CSS.gg](https://github.com/astrit/css.gg) icons using [react-icons](https://react-icons.github.io/react-icons)
-- styled with [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/), CSS [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- styled with [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/), CSS [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), [favicon.io](https://favicon.io/)
 
 
 **Next steps** Enabling removal of specific barcodes
