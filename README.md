@@ -16,7 +16,7 @@
 - styled with [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/), CSS [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), [favicon.io](https://favicon.io/)
 
 
-**Next steps** Enabling removal of specific barcodes
+**Next steps:** Enabling removal of specific barcodes, styling the toast notifs, Safari compatiable styling
 
 **Notes on this build**
 
