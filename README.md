@@ -17,7 +17,7 @@
 
 **Notes on this build**
 
-Currently the app creates a new account on refresh/initialization in `intro-to-solana-project/src/App.js` with the line `let baseAccount = Keypair.generate();`. Remove this and proceed to read below if you'd like instructions on how to create a shared `baseAccount`
+Currently the app creates a new account on refresh/initialization in `intro-to-solana-project/src/App.js` with the line `let baseAccount = Keypair.generate();`. This is for testing purposes so you can see the flow of a new user on the dApp. Remove this and proceed to read below if you'd like instructions on how to create a shared `baseAccount` and the flow for already having an account.
  
 >I have left comments inside of `App.js` right above `let baseAccount = Keypair.generate();` . Uncomment the 3 below lines if you want the users to share one baseAccount. I've tested it and it works.
   
