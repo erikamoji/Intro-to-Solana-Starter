@@ -1,10 +1,10 @@
 # Welcome to CODE128
 
- Store barcodes on chain with Solana using Phantom Wallet. Keep any alphanumeric barcode, with the anonymity you desire. This dApp was built for [BuildrPr3tti's first Solana Camp.](https://github.com/buildpr3tti/Intro-to-Solana-Starter)  
+ Store barcodes on chain with [Solana](https://solana.com/) using [Phantom Wallet](https://phantom.app/). Keep any alphanumeric barcode, with the anonymity you desire. This dApp was built for [BuildrPr3tti's first Solana Camp.](https://github.com/buildpr3tti/Intro-to-Solana-Starter)  
 
 ## Try it yourself
 > AVAILABLE ON ANY SIZED SCREEN. Mobile, Tablet, Desktop. 
-
+- Don't forget to switch to `devnet`
 https://erikamoji.vercel.app/
 
 
