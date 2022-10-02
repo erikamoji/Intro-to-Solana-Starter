@@ -184,7 +184,7 @@ const App = () => {
   const Card = ({ title, content }) => (
     <div className="card">
       <h2>{title}</h2>
-      {content}
+      <p>{content}</p>
     </div>
   );
 
@@ -207,7 +207,6 @@ const App = () => {
         <h1>your memberships, your data, on chain</h1>
       </div>
       <Marquee />
-      
     </div>
   );
 
@@ -215,19 +214,21 @@ const App = () => {
     if (gifList === null) {
       return (
         <div className="container connected-container">
-            <nav className="navbar fixed-top navbar-expand-lg">
-              <div className="container-fluid">
-                <p className="header">CODE128</p>
-                <button
-                  className="cta-button submit-gif-button"
-                  onClick={createGifAccount}
-                >
-                  CREATE A NEW KEYCHAIN
-                </button>
-              </div>
-            </nav>
-            <div className="img-flex"><img className="img-fluid" alt="Auth Page Landing" src={authpage} /></div>
+          <nav className="navbar fixed-top navbar-expand-lg">
+            <div className="container-fluid">
+              <p className="header">CODE128</p>
+              <button
+                className="cta-button submit-gif-button"
+                onClick={createGifAccount}
+              >
+                CREATE A NEW KEYCHAIN
+              </button>
+            </div>
+          </nav>
+          <div className="img-flex">
+            <img className="img-fluid" alt="Auth Page Landing" src={authpage} />
           </div>
+        </div>
       );
     } else {
       return (
@@ -264,19 +265,19 @@ const App = () => {
           </nav>
           <Carousel>
             {gifList.map((item, index) => (
-              <div className="" key={index}>
               <Card
                 title={"CARD " + (index + 1)}
                 content={
+                  <div className="" key={index}>
                     <Barcode
                       width={1}
                       fontSize={13}
                       format={"CODE128"}
                       value={item.gifLink}
                     />
+                  </div>
                 }
               />
-             </div>
             ))}
           </Carousel>
         </div>

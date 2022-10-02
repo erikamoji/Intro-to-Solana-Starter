@@ -36,8 +36,6 @@
   transition: all 0.3s ease-out;
 }
 
-.card-modal{margin: 10px;}
-
 .card {
   background-color: #fff;
   width: var(--card-width);
