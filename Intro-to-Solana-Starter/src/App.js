@@ -231,7 +231,7 @@ const App = () => {
           </div>
           <nav className="navbar fixed-top navbar-expand-lg">
             <div className="container-fluid">
-              <p className="header">CODE128</p>
+              <p className="header" href="https://github.com/erikamoji/Intro-to-Solana-Starter#readme">LEARN MORE</p>
               <button
                 className="cta-button submit-gif-button"
                 onClick={createGifAccount}
