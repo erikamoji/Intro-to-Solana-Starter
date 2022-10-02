@@ -27,10 +27,22 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 //CONSTANTS
 const { SystemProgram, Keypair } = web3;
+
+/*
+
+uncomment the 3 below lines if you want the users to share one baseAccount
+ i've tested it and it works
+
 const arr = Object.values(kp._keypair.secretKey);
 const secret = new Uint8Array(arr);
 const baseAccount = web3.Keypair.fromSecretKey(secret);
-const programID = new PublicKey("72z5anaRG11E11uWemh8Ucer9gz23jiCaSPew4q938dR");
+
+*/
+
+// this creates a new account every time the user refreshes the app
+let baseAccount = Keypair.generate();
+
+const programID = new PublicKey("D4qTif2KUt5cKot4RVn1kSxPiXaryKvBJDWbuBLsVybL");
 const network = clusterApiUrl("devnet");
 const opts = {
   preflightCommitment: "processed",
