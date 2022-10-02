@@ -37,7 +37,7 @@
 }
 
 .card {
-  background: #fff;
+  background-color: #fff;
   width: var(--card-width);
   height: var(--card-height);
   padding: 1rem;
@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  display: contents;
+  display: flex;
   transition: all 0.3s ease-out;
   font-size: 1.5em;
   color: rgb(88 199 250 / 0%);
