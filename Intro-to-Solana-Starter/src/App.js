@@ -2,14 +2,28 @@
 import React, { useEffect, useState } from "react";
 import { Connection, PublicKey, clusterApiUrl } from "@solana/web3.js";
 import { Program, Provider, web3 } from "@project-serum/anchor";
-import toast, { Toaster } from "react-hot-toast";
-import "./App.css";
 import idl from "./idl.json";
 import kp from "./keypair.json";
-import Barcode from 'react-barcode';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 
+// JSBarcode wrapped in React
+import Barcode from "react-barcode";
+
+// Toast Notifs
+import toast, { Toaster } from "react-hot-toast";
+
+// My new components
+import Carousel from "./Carousel";
+import "./Carousel.css";
+import Marquee from "./Marquee";
+import authpage from "./assets/authpage.gif";
+
+// Main CSS
+import "./App.css";
+
+// Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 //CONSTANTS
 const { SystemProgram, Keypair } = web3;
@@ -34,7 +48,7 @@ const App = () => {
     toast("To sign in, download a Phantom Wallet 👻 at https://phantom.app");
   const showConnectedWalletToast = () => toast.success("You're signed in!");
   const showDisconnectedWalletToast = () => toast.success("You've signed out!");
-  const showGifSentToast = () => toast.success("GIF Sent!");
+  const showGifSentToast = () => toast.success("Barcode submitted!");
 
   //ACTIONS
 
@@ -143,11 +157,11 @@ const App = () => {
 
   const sendGif = async () => {
     if (inputValue.length === 0) {
-      console.log("No gif link given!");
+      console.log("No barcode given!");
       return;
     }
     setInputValue("");
-    console.log("Gif link:", inputValue);
+    console.log("Barcode:", inputValue);
     try {
       const provider = getProvider();
       const program = new Program(idl, programID, provider);
@@ -158,88 +172,115 @@ const App = () => {
           user: provider.wallet.publicKey,
         },
       });
-      console.log("GIF successfully sent to program", inputValue);
+      console.log("Barcode successfully sent to program", inputValue);
 
       await getGifList();
       showGifSentToast();
     } catch (error) {
-      console.log("Error sending GIF:", error);
+      console.log("Error sending Barcode:", error);
     }
   };
 
+  const Card = ({ title, content }) => (
+    <div className="card">
+      <h2>{title}</h2>
+      {content}
+    </div>
+  );
+
   const renderNotConnectedContainer = () => (
     <div className="container">
-      <Navbar>
-      <Container>
-      <Navbar.Brand href="#home"><p className="header">CODE128</p></Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
+      <nav className="navbar fixed-top navbar-expand-lg">
+        <div className="container-fluid">
+          <p className="header" href="#">
+            CODE128
+          </p>
           <button
-        className="cta-button connect-wallet-button"
-        onClick={connectWallet}
-      >
-        SIGN IN
-      </button>
-          </Navbar.Text>
-        </Navbar.Collapse>
-        </Container>
-        </Navbar>
+            className="cta-button connect-wallet-button"
+            onClick={connectWallet}
+          >
+            CONNECT WALLET
+          </button>
+        </div>
+      </nav>
+      <div className="d-flex justify-content-center sub-header">
+        <h1>your memberships, your data, on chain</h1>
+      </div>
+      <Marquee />
       
-      <p className="sub-header">Turn your barcodes into blocks</p>
-      <div className="moon" />
-      <div className="kiki" />
     </div>
   );
 
   const renderConnectedContainer = () => {
     if (gifList === null) {
       return (
-        <div className="connected-container">
-          <button
-            className="cta-button submit-gif-button"
-            onClick={createGifAccount}
-          >
-            Do One-Time Initialization For GIF Program Account
-          </button>
+        <div className="container connected-container">
+          <div className="container-fluid jumbotron jumbotron-fluid auth-jumbotron">
+            <img className="img-fluid" src={authpage} />
+            <nav className="navbar fixed-top navbar-expand-lg">
+              <div className="container-fluid">
+                <p className="header">CODE128</p>
+                <button
+                  className="cta-button submit-gif-button"
+                  onClick={createGifAccount}
+                >
+                  CREATE A NEW KEYCHAIN
+                </button>
+              </div>
+            </nav>
+          </div>
         </div>
       );
     } else {
       return (
         <div className="connected-container">
-          <p className="connected-header">WELCOME {shortenAddress(walletAddress)}</p>
-          
-          <button
-            className="cta-button disconnect-wallet-button"
-            onClick={disconnectWallet}
-          >
-            SIGN OUT
-          </button>
-          
-          <div className="gif-grid">
+          <nav className="navbar fixed-top navbar-expand-lg">
+            <div className="container-fluid">
+              <p className="header">HELLO, {shortenAddress(walletAddress)}</p>
+              <button
+                className="cta-button disconnect-wallet-button"
+                onClick={disconnectWallet}
+              >
+                SIGN OUT
+              </button>
+            </div>
+          </nav>
+          <nav className="navbar form-inline fixed-bottom">
+            <form
+              className="form"
+              onSubmit={(event) => {
+                event.preventDefault();
+                sendGif();
+              }}
+            >
+              <input
+                type="text"
+                placeholder="enter in your loyalty card number"
+                value={inputValue}
+                onChange={onInputChange}
+              />
+              <button type="submit" className="cta-button submit-gif-button">
+                SUBMIT
+              </button>
+            </form>
+          </nav>
+          <Carousel>
             {gifList.map((item, index) => (
-              <div className="gif-item" key={index}>
-                  <Barcode fontSize={15} width={1} height={50} value={item.gifLink} />
-              </div>
+              <Card
+                title={"CARD " + (index + 1)}
+                content={
+                  <div key={index}>
+                    <Barcode
+                      width={1}
+                      fontSize={13}
+                      format={"CODE128"}
+                      value={item.gifLink}
+                    />
+                  </div>
+                }
+              />
             ))}
-          </div>
-          <form
-            className="form"
-            onSubmit={(event) => {
-              event.preventDefault();
-              sendGif();
-            }}
-          >
-            <input
-              type="text"
-              placeholder="enter in your loyalty card number"
-              value={inputValue}
-              onChange={onInputChange}
-            />
-            <button type="submit" className="cta-button submit-gif-button">
-              SUBMIT
-            </button>
-          </form>
+          </Carousel>
         </div>
       );
     }
@@ -286,7 +327,5 @@ const App = () => {
     </div>
   );
 };
-
-
 
 export default App;
