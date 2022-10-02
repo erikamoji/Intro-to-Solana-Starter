@@ -1,39 +1,35 @@
 # Welcome to CODE128
 
-This dApp was built for [BuildrPr3tti's first Solana Camp.](https://github.com/buildpr3tti/Intro-to-Solana-Starter)
+ Store barcodes on chain with Solana using Phantom Wallet. Keep any alphanumeric barcode, with the anonymity you desire. This dApp was built for [BuildrPr3tti's first Solana Camp.](https://github.com/buildpr3tti/Intro-to-Solana-Starter)  
 
-## Store barcodes on chain with Solana using Phantom Wallet
+## Try it yourself
+> AVAILABLE ON ANY SIZED SCREEN. Mobile, Tablet, Desktop. 
 
-Keep any alphanumeric barcode, with the anonymity you desire
-
-**Try it yourself**
 https://erikamoji.vercel.app/
-> AVAILABLE ON ANY SIZED SCREEN.
-> Mobile, Tablet, Desktop. Try it yourself!
+
 
 **Built with** Javascript, Rust, Anchor, React, CSS
->- [react-barcode](https://github.com/kciter/react-barcode), a React wrapper for [JSBarcode](https://github.com/lindell/JsBarcode).
-> - [react-hot-toast](https://react-hot-toast.com/)
-> - [Material Design](https://developers.google.com/fonts/docs/material_icons) icons and [CSS.gg](https://github.com/astrit/css.gg) icons using [react-icons](https://react-icons.github.io/react-icons)
-> - styled with [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/), CSS [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [react-barcode](https://github.com/kciter/react-barcode), a React wrapper for [JSBarcode](https://github.com/lindell/JsBarcode).
+- [react-hot-toast](https://react-hot-toast.com/)
+- [Material Design](https://developers.google.com/fonts/docs/material_icons) icons and [CSS.gg](https://github.com/astrit/css.gg) icons using [react-icons](https://react-icons.github.io/react-icons)
+- styled with [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/), CSS [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
-**Next steps**
-Enabling removal of specific barcodes from the Rust vector using vec.remove()
+
+**Next steps** Enabling removal of specific barcodes
 
 **Notes on this build**
-Currently the app creates a new account on refresh/initialization in `intro-to-solana-project/src/App.js` with the line `
-`// this creates a new account every time the user refreshes the app
-let baseAccount = Keypair.generate();`
 
-I have left comments inside of `App.js` right above `let baseAccount = Keypair.generate();` with instructions on how to create a shared `baseAccount`
-`uncomment the 3 below lines if you want the users to share one baseAccount
- i've tested it and it works
+Currently the app creates a new account on refresh/initialization in `intro-to-solana-project/src/App.js` with the line `let baseAccount = Keypair.generate();`. Remove this and proceed to read below if you'd like instructions on how to create a shared `baseAccount`
+ 
+>I have left comments inside of `App.js` right above `let baseAccount = Keypair.generate();` . Uncomment the 3 below lines if you want the users to share one baseAccount. I've tested it and it works.
+  
+    const arr = Object.values(kp._keypair.secretKey);
+    const secret = new Uint8Array(arr);
+    const baseAccount = web3.Keypair.fromSecretKey(secret);
 
-const arr = Object.values(kp._keypair.secretKey);
-const secret = new Uint8Array(arr);
-const baseAccount = web3.Keypair.fromSecretKey(secret);`
 
 ## How to clone
+
 To get started:
 
 - Click the fork button. You've now created your own version of the project.
