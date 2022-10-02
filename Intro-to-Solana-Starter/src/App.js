@@ -215,8 +215,7 @@ const App = () => {
     if (gifList === null) {
       return (
         <div className="container connected-container">
-          <div className="container-fluid jumbotron jumbotron-fluid auth-jumbotron">
-            <img className="img-fluid" src={authpage} />
+          <div className="container-fluid">
             <nav className="navbar fixed-top navbar-expand-lg">
               <div className="container-fluid">
                 <p className="header">CODE128</p>
@@ -228,6 +227,7 @@ const App = () => {
                 </button>
               </div>
             </nav>
+            <div className="img-flex"><img className="img-fluid" alt="Auth Page Landing" src={authpage} /></div>
           </div>
         </div>
       );
