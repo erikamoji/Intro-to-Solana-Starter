@@ -62,7 +62,7 @@
 
 .card:hover {
   background: #fff;
-  color: rgb(0 0 0 / 100%);
+  color: rgb(78,0,194, 100%);
   transition: color 1s;
 }
 .card:hover:before {
