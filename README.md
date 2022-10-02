@@ -11,7 +11,6 @@ https://erikamoji.vercel.app/
 > AVAILABLE ON ANY SIZED SCREEN.
 > Mobile, Tablet, Desktop. Try it yourself!
 
-
 **Built with** Javascript, Rust, Anchor, React, CSS
 >- [react-barcode](https://github.com/kciter/react-barcode), a React wrapper for [JSBarcode](https://github.com/lindell/JsBarcode).
 > - [react-hot-toast](https://react-hot-toast.com/)
@@ -20,6 +19,19 @@ https://erikamoji.vercel.app/
 
 **Next steps**
 Enabling removal of specific barcodes from the Rust vector using vec.remove()
+
+**Notes on this build**
+Currently the app creates a new account on refresh/initialization in `intro-to-solana-project/src/App.js` with the line `
+`// this creates a new account every time the user refreshes the app
+let baseAccount = Keypair.generate();`
+
+I have left comments inside of `App.js` right above `let baseAccount = Keypair.generate();` with instructions on how to create a shared `baseAccount`
+`uncomment the 3 below lines if you want the users to share one baseAccount
+ i've tested it and it works
+
+const arr = Object.values(kp._keypair.secretKey);
+const secret = new Uint8Array(arr);
+const baseAccount = web3.Keypair.fromSecretKey(secret);`
 
 ## How to clone
 To get started:
