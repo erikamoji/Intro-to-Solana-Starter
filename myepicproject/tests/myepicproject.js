@@ -20,7 +20,7 @@ const main = async() => {
   console.log("📝 Your transaction signature", tx);
 
   let account = await program.account.baseAccount.fetch(baseAccount.publicKey);
-  console.log('👀 GIF Count', account.totalGifs.toString())
+  console.log('Barcode Count', account.totalGifs.toString())
 	
   await program.rpc.addGif("ABC-123-abc", {
     accounts: {
@@ -30,9 +30,9 @@ const main = async() => {
   });
   
   account = await program.account.baseAccount.fetch(baseAccount.publicKey);
-  console.log('👀 GIF Count', account.totalGifs.toString())
+  console.log('Barcode Count', account.totalGifs.toString())
 
-  console.log('👀 GIF List', account.gifList)
+  console.log('Barcode List', account.gifList)
   
 }
 

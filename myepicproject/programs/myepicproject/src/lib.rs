@@ -1,31 +1,32 @@
 use anchor_lang::prelude::*;
 
-declare_id!("72z5anaRG11E11uWemh8Ucer9gz23jiCaSPew4q938dR");
+declare_id!("9PdTiPTE9NaujVAW6mA5USf5ZeC3xMCDwBBthNL3dGD5");
 
 #[program]
 pub mod myepicproject {
-  use super::*;
-  pub fn start_stuff_off(ctx: Context<StartStuffOff>) -> Result <()> {
-    let base_account = &mut ctx.accounts.base_account;
-    base_account.total_gifs = 0;
-    Ok(())
+    use super::*;
+
+    pub fn start_stuff_off(_ctx: Context<StartStuffOff>) -> Result <()> {
+      let base_account = &mut _ctx.accounts.base_account;
+      base_account.total_gifs = 0;
+      Ok(())
+    }
+
+    pub fn add_gif(_ctx: Context<AddGif>, gif_link: String) -> Result <()> {
+      let base_account = &mut _ctx.accounts.base_account;
+      let user = &mut _ctx.accounts.user;
+  
+      let item = ItemStruct {
+        gif_link: gif_link.to_string(),
+        user_address: *user.to_account_info().key,
+      };
+      
+      base_account.gif_list.push(item);
+      base_account.total_gifs += 1;
+      Ok(())
+    }
   }
   
-  pub fn add_gif(ctx: Context<AddGif>, gif_link: String) -> Result <()> {
-    let base_account = &mut ctx.accounts.base_account;
-    let user = &mut ctx.accounts.user;
-
-    let item = ItemStruct {
-      gif_link: gif_link.to_string(),
-      user_address: *user.to_account_info().key,
-    };
-		
-    base_account.gif_list.push(item);
-    base_account.total_gifs += 1;
-    Ok(())
-  }
-}
-
 #[derive(Accounts)]
 pub struct StartStuffOff<'info> {
   #[account(init, payer = user, space = 9000)]

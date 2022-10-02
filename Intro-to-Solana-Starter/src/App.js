@@ -215,7 +215,6 @@ const App = () => {
     if (gifList === null) {
       return (
         <div className="container connected-container">
-          <div className="container-fluid">
             <nav className="navbar fixed-top navbar-expand-lg">
               <div className="container-fluid">
                 <p className="header">CODE128</p>
@@ -229,7 +228,6 @@ const App = () => {
             </nav>
             <div className="img-flex"><img className="img-fluid" alt="Auth Page Landing" src={authpage} /></div>
           </div>
-        </div>
       );
     } else {
       return (
@@ -266,19 +264,19 @@ const App = () => {
           </nav>
           <Carousel>
             {gifList.map((item, index) => (
+              <div className="" key={index}>
               <Card
                 title={"CARD " + (index + 1)}
                 content={
-                  <div key={index}>
                     <Barcode
                       width={1}
                       fontSize={13}
                       format={"CODE128"}
                       value={item.gifLink}
                     />
-                  </div>
                 }
               />
+             </div>
             ))}
           </Carousel>
         </div>

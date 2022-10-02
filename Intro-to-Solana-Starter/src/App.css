@@ -46,6 +46,7 @@
   justify-content: center;
   width:fit-content;
   height: 75vh;
+  border-radius: 20px;
 }
 
 .header {

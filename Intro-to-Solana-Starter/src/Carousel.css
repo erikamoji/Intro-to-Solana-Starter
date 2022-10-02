@@ -36,6 +36,8 @@
   transition: all 0.3s ease-out;
 }
 
+.card-modal{margin: 10px;}
+
 .card {
   background-color: #fff;
   width: var(--card-width);
@@ -62,7 +64,7 @@
 
 .card:hover {
   background: #fff;
-  color: rgb(78,0,194, 100%);
+  color: rgb(195,150,247, 100%);
   transition: color 1s;
 }
 .card:hover:before {
@@ -70,8 +72,6 @@
   animation: none;
   opacity: 0;
 }
-
-
 .card::before {
   content: "";
   width: 105%;
@@ -85,7 +85,6 @@
     padding: 10px;
     animation: spin 2.5s linear infinite;
 }
-
 .card:hover:after {
   position: absolute;
   content: "";
@@ -106,7 +105,6 @@
   transition: opacity .5s;
   animation: spin 2.5s linear infinite;
 }
-
 @keyframes spin {
   0% {
     --rotate: 0deg;
@@ -115,8 +113,6 @@
     --rotate: 360deg;
   }
 }
-
-
 .nav {
   font-size: 5rem;
   position: absolute;
@@ -126,7 +122,7 @@
   z-index: 2;
   cursor:pointer;
   margin: 10px;
-  margin-top: 300px;
+  margin-top: 200px;
   user-select: none;
 }
 
